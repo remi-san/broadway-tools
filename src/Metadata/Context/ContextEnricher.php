@@ -19,12 +19,6 @@ class ContextEnricher implements MetadataEnricherInterface
      */
     public function enrich(Metadata $metadata)
     {
-        $contextMetadata = new Metadata(
-            [
-                static::CONTEXT => ContextContainer::getContext()
-            ]
-        );
-
-        return $metadata->merge($contextMetadata);
+        return $metadata->merge(new Metadata([static::CONTEXT => ContextContainer::getContext()]));
     }
 }

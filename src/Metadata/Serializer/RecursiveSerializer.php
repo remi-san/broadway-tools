@@ -24,8 +24,8 @@ class RecursiveSerializer implements SerializerInterface
 
     /**
      * @param $object
-     * @return array
      * @throws SerializationException
+     * @return array
      */
     public function serialize($object)
     {
@@ -34,8 +34,8 @@ class RecursiveSerializer implements SerializerInterface
 
     /**
      * @param array $serializedObject
-     * @return mixed
      * @throws SerializationException
+     * @return mixed
      */
     public function deserialize(array $serializedObject)
     {
