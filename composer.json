@@ -23,7 +23,8 @@
         "squizlabs/php_codesniffer": "~2.0",
         "remi-san/serializer": "^1.2@dev",
         "remi-san/context": "^1.0",
-        "remi-san/transaction-manager": "^1.0"
+        "remi-san/transaction-manager": "^1.0",
+        "league/event": "^2.1"
     },
     "autoload": {
         "psr-4": {
@@ -34,7 +35,8 @@
     "suggest": {
         "remi-san/serializer": "Allows to use serializer.",
         "remi-san/context": "Allows to use context",
-        "remi-san/transaction-manager": "Allows to use a transaction manager"
+        "remi-san/transaction-manager": "Allows to use a transaction manager",
+        "league/event": "Allows to publish in League Event Bus"
     },
     "extra": {
         "branch-alias": {
