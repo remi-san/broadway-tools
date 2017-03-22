@@ -3,10 +3,10 @@
 namespace Broadway\Tools\Metadata\Serializer;
 
 use Broadway\Serializer\SerializationException;
-use Broadway\Serializer\SerializerInterface;
+use Broadway\Serializer\Serializer as BroadwaySerializer;
 use RemiSan\Serializer\Serializer;
 
-class RecursiveSerializer implements SerializerInterface
+class RecursiveSerializer implements BroadwaySerializer
 {
     /**
      * @var Serializer

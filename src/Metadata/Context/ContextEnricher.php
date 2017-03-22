@@ -3,10 +3,10 @@
 namespace Broadway\Tools\Metadata\Context;
 
 use Broadway\Domain\Metadata;
-use Broadway\EventSourcing\MetadataEnrichment\MetadataEnricherInterface;
+use Broadway\EventSourcing\MetadataEnrichment\MetadataEnricher;
 use RemiSan\Context\ContextContainer;
 
-class ContextEnricher implements MetadataEnricherInterface
+class ContextEnricher implements MetadataEnricher
 {
     const CONTEXT = 'context';
 

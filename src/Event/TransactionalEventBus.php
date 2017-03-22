@@ -2,15 +2,15 @@
 
 namespace Broadway\Tools\Event;
 
-use Broadway\Domain\DomainEventStreamInterface;
-use Broadway\EventHandling\EventBusInterface;
-use Broadway\EventHandling\EventListenerInterface;
+use Broadway\Domain\DomainEventStream;
+use Broadway\EventHandling\EventBus;
+use Broadway\EventHandling\EventListener;
 use RemiSan\TransactionManager\TransactionManager;
 
-class TransactionalEventBus implements EventBusInterface
+class TransactionalEventBus implements EventBus
 {
     /**
-     * @var EventBusInterface
+     * @var EventBus
      */
     private $eventBus;
 
@@ -20,10 +20,10 @@ class TransactionalEventBus implements EventBusInterface
     private $transactionManager;
 
     /**
-     * @param EventBusInterface  $eventBus
+     * @param EventBus           $eventBus
      * @param TransactionManager $transactionManager
      */
-    public function __construct(EventBusInterface $eventBus, TransactionManager $transactionManager)
+    public function __construct(EventBus $eventBus, TransactionManager $transactionManager)
     {
         $this->eventBus = $eventBus;
         $this->transactionManager = $transactionManager;
@@ -32,9 +32,9 @@ class TransactionalEventBus implements EventBusInterface
     /**
      * Subscribes the event listener to the event bus.
      *
-     * @param EventListenerInterface $eventListener
+     * @param EventListener $eventListener
      */
-    public function subscribe(EventListenerInterface $eventListener)
+    public function subscribe(EventListener $eventListener)
     {
         $this->eventBus->subscribe($eventListener);
     }
@@ -42,10 +42,10 @@ class TransactionalEventBus implements EventBusInterface
     /**
      * Publishes the events from the domain event stream to the listeners.
      *
-     * @param DomainEventStreamInterface $domainMessages
+     * @param DomainEventStream $domainMessages
      * @throws \Exception
      */
-    public function publish(DomainEventStreamInterface $domainMessages)
+    public function publish(DomainEventStream $domainMessages)
     {
         $this->transactionManager->beginTransaction();
         try {

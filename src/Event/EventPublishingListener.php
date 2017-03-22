@@ -3,10 +3,10 @@
 namespace Broadway\Tools\Event;
 
 use Broadway\Domain\DomainMessage;
-use Broadway\EventHandling\EventListenerInterface;
+use Broadway\EventHandling\EventListener;
 use League\Event\Emitter;
 
-class EventPublishingListener implements EventListenerInterface
+class EventPublishingListener implements EventListener
 {
     /** @var Emitter */
     private $emitter;

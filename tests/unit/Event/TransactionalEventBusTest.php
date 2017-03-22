@@ -2,9 +2,9 @@
 
 namespace Broadway\Tools\Test\Event;
 
-use Broadway\Domain\DomainEventStreamInterface;
-use Broadway\EventHandling\EventBusInterface;
-use Broadway\EventHandling\EventListenerInterface;
+use Broadway\Domain\DomainEventStream;
+use Broadway\EventHandling\EventBus;
+use Broadway\EventHandling\EventListener;
 use Broadway\Tools\Event\TransactionalEventBus;
 use RemiSan\TransactionManager\TransactionManager;
 
@@ -22,7 +22,7 @@ class TransactionalEventBusTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->eventBus = \Mockery::mock(EventBusInterface::class);
+        $this->eventBus = \Mockery::mock(EventBus::class);
         $this->transactionManager = \Mockery::mock(TransactionManager::class);
     }
 
@@ -36,7 +36,7 @@ class TransactionalEventBusTest extends \PHPUnit_Framework_TestCase
      */
     public function itShouldSubscribeInTheInnerBus()
     {
-        $listener = \Mockery::mock(EventListenerInterface::class);
+        $listener = \Mockery::mock(EventListener::class);
 
         $this->eventBus->shouldReceive('subscribe')->with($listener)->once();
 
@@ -49,7 +49,7 @@ class TransactionalEventBusTest extends \PHPUnit_Framework_TestCase
      */
     public function itShouldCommitAfterPublishing()
     {
-        $stream = \Mockery::mock(DomainEventStreamInterface::class);
+        $stream = \Mockery::mock(DomainEventStream::class);
 
         $this->transactionManager->shouldReceive('beginTransaction')->once();
         $this->transactionManager->shouldReceive('commit')->once();
@@ -65,7 +65,7 @@ class TransactionalEventBusTest extends \PHPUnit_Framework_TestCase
      */
     public function itShouldRollbackAfterPublishingFailed()
     {
-        $stream = \Mockery::mock(DomainEventStreamInterface::class);
+        $stream = \Mockery::mock(DomainEventStream::class);
 
         $this->transactionManager->shouldReceive('beginTransaction')->once();
         $this->transactionManager->shouldReceive('rollback')->once();
