@@ -3,7 +3,6 @@
 
 namespace Broadway\Tools\Command;
 
-
 use Broadway\CommandHandling\CommandBus;
 use Broadway\CommandHandling\CommandHandler;
 use Exception;
